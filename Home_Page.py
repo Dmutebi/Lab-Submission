@@ -1,6 +1,5 @@
 import streamlit as st
-import google.generativeai as genai
-import os
+
 
 # Title of App
 st.title("Chinese Language Learning")
