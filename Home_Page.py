@@ -22,10 +22,10 @@ st.subheader("Dembe Mutebi")
 st.write("""
 Welcome to our Streamlit Web Development Lab03 app! You can navigate between the pages using the sidebar to the left. The following pages are:
 
-1. Home Page
-2. Characters Data
-3. Choose a Text!
-4. AI Chatbot-->Translating between both languages
+1. Home_Page
+2. PhaseII_Lab02
+3. thirdwebpage
+4. AI ChatbotI
 
 """)
 
