@@ -1,3 +1,6 @@
-.radio
-.toggle
-.metric
+streamlit
+google-generativeai
+requests
+ctext
+matplotlib-pyplot
+os
