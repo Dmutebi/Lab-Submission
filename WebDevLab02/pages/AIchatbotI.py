@@ -14,7 +14,7 @@ if not GEMINI_API_KEY:
     st.error("❌ Gemini API key not found. Please set GEMINI_API_KEY in your .env file.")
     st.stop()
 
-genai.configure(api_key=AIzaSyCRPO4GFrRZ7I5nAiycwKkg9rUFLNNVvV8)
+genai.configure(api_key="AIzaSyCRPO4GFrRZ7I5nAiycwKkg9rUFLNNVvV8")
 
 
 texts = {
