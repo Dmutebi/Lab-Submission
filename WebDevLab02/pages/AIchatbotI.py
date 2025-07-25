@@ -52,7 +52,7 @@ if st.button("Translate with Gemini"):
         prompt = f"""Translate the following modern English into Classical Chinese using the style found in the Analects or Mencius:\n\n{selected_text}"""
 
     try:
-        model = genai.GenerativeModel("gemini-pro")
+        model = genai.GenerativeModel("models/gemini-1.5-pro")
         response = model.generate_content(prompt)
         st.success("✅ Translation:")
         st.write(response.text)
