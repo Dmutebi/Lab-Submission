@@ -16,11 +16,11 @@ if keyword:
         
         
         for r in results:
-        #options = {f"{r['title']} ({r['urn']})": r['urn'] for r in results}
             options = {}
             r = requests.get(" https://api.ctext.org/gettext?urn=ctp:analects/xue-er")
             r = r.json()
             print(r['fulltext'])
+        options = {f"{r['title']} ({r['urn']})": r['urn'] for r in results}
         urn = st.selectbox("Select a text:", list(options.keys()))
         if urn:
                 paras = gettextasparagraphlist(options[urn])
