@@ -1,6 +1,5 @@
 streamlit
 google-generativeai
 requests
-ctext
 matplotlib
-os
+
