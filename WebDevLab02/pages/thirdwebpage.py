@@ -42,7 +42,7 @@ if selected_text:
         print(r['fulltext'])
         st.success(f"Retrieved {len(r['fulltext'])} requests from {selected_text}.")
         para_lengths = [len(rs) for rs in r['fulltext']]
-        fig, ax = plt.subplots()
+        fig, ax = px.subplots()
         ax.bar(range(len(para_lengths)), para_lengths)
         ax.set_title(f"Paragraph Lengths in {selected_text}")
         ax.set_xlabel("Paragraph #")
