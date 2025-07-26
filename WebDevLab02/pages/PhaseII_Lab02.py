@@ -30,7 +30,7 @@ if keyword:
 
                 st.success(f"✅ {len(paras)} paragraphs loaded from `{urn}`")
 
-                # Plot paragraph lengths
+                
                 lengths = [len(p) for p in paras]
                 fig = px.bar(
                     x=list(range(1, len(lengths) + 1)),
