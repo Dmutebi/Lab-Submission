@@ -1,6 +1,6 @@
 import streamlit as st
 from ctext import gettextinfo
-import  plotly.express as px
+import  matplotlib.pyplot as plt
 import requests
 
 four_books = {
@@ -42,7 +42,7 @@ if selected_text:
         print(r['fulltext'])
         st.success(f"Retrieved {len(r['fulltext'])} requests from {selected_text}.")
         para_lengths = [len(rs) for rs in r['fulltext']]
-        fig, ax = px.subplots()
+        fig, ax = plt.subplots()
         ax.bar(range(len(para_lengths)), para_lengths)
         ax.set_title(f"Paragraph Lengths in {selected_text}")
         ax.set_xlabel("Paragraph #")
