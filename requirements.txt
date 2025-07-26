@@ -5,3 +5,4 @@ plotly
 ctext
 dotenv
 matplotlib
+GEMINI_API_KEY=AIzaSyCRPO4GFrRZ7I5nAiycwKkg9rUFLNNVvV8
