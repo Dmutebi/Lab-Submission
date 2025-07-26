@@ -1,6 +1,6 @@
 import streamlit as st
 from ctext import gettextinfo
-import matplotlib.pyplot as plt
+import  plotly.express as px
 import requests
 
 four_books = {
