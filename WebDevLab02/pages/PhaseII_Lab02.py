@@ -40,7 +40,7 @@ if keyword:
                 )
                 st.plotly_chart(fig)
 
-                # Show full text
+                
                 st.text_area("📜 Full Text", "\n\n".join(paras), height=300)
 
         else:
