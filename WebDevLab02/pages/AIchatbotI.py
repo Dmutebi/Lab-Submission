@@ -1,14 +1,15 @@
 import streamlit as st
 from ctext import gettextasparagraphlist
 import google.generativeai as genai
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 import os
+import time
 
 
-#load_dotenv()
+load_dotenv()
 
 
-#GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")\
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")\
 GEMINI_API_KEY = "AIzaSyCRPO4GFrRZ7I5nAiycwKkg9rUFLNNVvV8"
 if not GEMINI_API_KEY:
     st.error("❌ Gemini API key not found. Please set GEMINI_API_KEY in your .env file.")
@@ -53,10 +54,24 @@ if st.button("Translate with Gemini"):
 
     try:
         model = genai.GenerativeModel("models/gemini-1.5-pro")
-        response = model.generate_content(prompt)
-        st.success("✅ Translation:")
-        st.write(response.text)
-    except Exception as e:
+        max_retries = 3
+        delay_seconds = 30
+        for attempt in range(max_retries):
+            try:
+                response = model.generate_content(prompt)
+                st.success("✅ Translation:")
+                st.write(response.text)
+                break
+            except Exception as e:
+                if "429" in str(e):
+                    st.warning(f"⚠️ Quota exceeded. Retrying in {delay_seconds} seconds... (Attempt {attempt + 1}/{max_retries})")
+                    time.sleep(delay_seconds)
+                else:
+                    raise e
+
+        else:
+            st.error("❌ Failed after multiple attempts. Please try again later or check your quota.")
+    except Exception as final_error:
         st.error(f"⚠️ LLM Error: {e}")
 
 
