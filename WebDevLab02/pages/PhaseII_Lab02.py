@@ -1,11 +1,9 @@
 import streamlit as st
 from ctext import setlanguage, searchtexts, gettextasparagraphlist
 import plotly.express as px
-
-# Set language for ctext
+import requests
 setlanguage("en")
 
-# Title and input
 st.title("📚 Classical Chinese Text Explorer")
 st.write("Try entering Chinese keywords like: `道`, `仁`, `禮`, `天`, `德`")
 
@@ -17,8 +15,8 @@ if keyword:
         st.subheader("🔍 Raw Search Results (for debugging)")
         st.json(results)
 
-        # Filter only valid entries with both 'title' and 'urn'
-        options = {}
+        if results:
+            options = {}
         for r in results:
             if isinstance(r, dict) and 'title' in r and 'urn' in r:
                 label = f"{r['title']} ({r['urn']})"
