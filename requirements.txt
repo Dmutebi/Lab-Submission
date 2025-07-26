@@ -4,3 +4,4 @@ requests
 plotly
 ctext
 dotenv
+matplotlib
