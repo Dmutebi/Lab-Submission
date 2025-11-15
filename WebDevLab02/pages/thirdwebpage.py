@@ -1,4 +1,5 @@
 import streamlit as st
+from ctext import gettextinfo
 import matplotlib.pyplot as plt
 import requests
 
@@ -62,4 +63,5 @@ if selected_text:
 
     except Exception as e:
         st.error(f"⚠️ Failed to retrieve text: {e}")
+
 
