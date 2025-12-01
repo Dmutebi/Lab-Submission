@@ -45,7 +45,6 @@ def generate_analysis(text):
             
         except requests.exceptions.HTTPError as e:
             if response.status_code == 429 and attempt < max_retries - 1:
-                # Retry on rate limiting with increasing delay
                 time.sleep(delay)
                 delay *= 2
             else:
@@ -68,18 +67,20 @@ keyword = st.text_input("Enter a Chinese keyword to search:")
 if keyword:
     try:
         results = searchtexts(keyword)
-    
         st.subheader("🔍 Raw Search Results (for debugging)")
         st.json(results)
         
         options = {}
+        valid_count = 0
+        total_results = len(results) if results else 0
         
         if results:
             for r in results:
                 if isinstance(r, dict) and 'title' in r and 'urn' in r:
                     label = f"{r['title']} ({r['urn']})"
                     options[label] = r['urn']
-                    
+                    valid_count += 1
+
         if options:
             selected_label = st.selectbox("Select a text:", list(options.keys()))
             
@@ -123,6 +124,7 @@ if keyword:
         
 else:
     st.info("⏳ Please enter a Chinese keyword above to begin the search.")
+
 
 
 
