@@ -5,6 +5,6 @@ plotly
 ctext
 dotenv
 matplotlib
-json
+
 
 
