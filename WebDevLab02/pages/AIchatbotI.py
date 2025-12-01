@@ -8,7 +8,7 @@ import os
 #load_dotenv()
 
 
-#GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")\
+
 GEMINI_API_KEY = "AIzaSyCRPO4GFrRZ7I5nAiycwKkg9rUFLNNVvV8"
 if not GEMINI_API_KEY:
     st.error("❌ Gemini API key not found. Please set GEMINI_API_KEY in your .env file.")
@@ -58,6 +58,7 @@ if st.button("Translate with Gemini"):
         st.write(response.text)
     except Exception as e:
         st.error(f"⚠️ LLM Error: {e}")
+
 
 
 
