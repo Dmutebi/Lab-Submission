@@ -20,7 +20,7 @@ def generate_analysis(text):
     user_query = f"Analyze the core themes and structure of this text:\n\n---\n{text_content}"
     
     
-    api_key = "AIzaSyCRPO4GFrRZ7I5nAiycwKkg9rUFLNNVvV8" 
+    api_key = "" 
     api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key={AIzaSyCRPO4GFrRZ7I5nAiycwKkg9rUFLNNVvV8}"
 
     payload = {
@@ -123,6 +123,7 @@ if keyword:
         
 else:
     st.info("⏳ Please enter a Chinese keyword above to begin the search.")
+
 
 
 
