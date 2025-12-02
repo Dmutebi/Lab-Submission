@@ -1,10 +1,10 @@
 import streamlit as st
 from ctext import setlanguage, searchtexts, gettextasparagraphlist
 import plotly.express as px
-import time # Import time for potential future LLM integration
-import requests # Import requests for potential future LLM integration
-import json # Import json for potential future LLM integration
-import google.generativeai as genai # Import genai for potential future LLM integration
+import time 
+import requests 
+import json 
+import google.generativeai as genai 
 
 
 setlanguage("en")
@@ -12,21 +12,20 @@ setlanguage("en")
 st.title("📚 Classical Chinese Text Explorer")
 keyword = st.text_input("🔍 Enter a Chinese keyword to search:", value="") # Added default value for clarity
 
-# --- Check 1: Is the keyword actually present? ---
+
 if not keyword or keyword.strip() == "":
     st.info("💡 Please enter a Chinese keyword above (e.g., '道', '仁', '禮') to begin your search.")
     st.stop()
 
 
-# --- Main Search Logic ---
+
 try:
     results = searchtexts(keyword)
 
-    # --- Debugging Output ---
+    
     with st.expander("🔍 Show Raw Search Results (for debugging)"):
         st.write("Results returned by ctext.org:")
         st.json(results)
-    # -----------------------
 
     if isinstance(results, list) and results:
         with st.container():
@@ -79,7 +78,6 @@ try:
                     else:
                         st.warning("⚠ No paragraph content found for this selection.")
             
-            # --- Detailed Warning for Partially Invalid Results ---
             elif total_results > 0 and valid_count == 0:
                 st.warning(f"⚠ The search returned {total_results} results, but none contained both a 'title' and 'urn'. Check the raw results above for details.")
             
@@ -89,12 +87,11 @@ try:
                 st.warning("⚠ No valid text entries found.")
                 
     else:
-        # --- Final Warning for Zero Results ---
-        # This is where your original warning was. Now it only catches cases where results is empty/None.
         st.warning(f"⚠ No texts found from ctext.org for the keyword '{keyword}'. Try a broader search term.")
 
 except Exception as e:
     st.error(f"❌ An unexpected error occurred during the search: {e}")
+
 
 
 
