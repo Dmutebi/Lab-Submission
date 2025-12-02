@@ -32,12 +32,10 @@ try:
             st.markdown("### 📄 Matching Classical Texts")
             options = {}
             
-            # Count valid/invalid results for detailed feedback
             total_results = len(results)
             valid_count = 0
 
             for r in results:
-                # Ensure the result is a dictionary and contains the required keys 'title' and 'urn'
                 if isinstance(r, dict) and 'title' in r and 'urn' in r:
                     label = f"{r['title']} ({r['urn']})"
                     options[label] = r['urn']
@@ -91,6 +89,7 @@ try:
 
 except Exception as e:
     st.error(f"❌ An unexpected error occurred during the search: {e}")
+
 
 
 
